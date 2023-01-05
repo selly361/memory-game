@@ -8,6 +8,7 @@ function GrideSizeSelection() {
   const gridSize = useAppSelector((state) => state.game.gridSize);
   const dispatch = useAppDispatch();
 
+
   return (
     <Container>
       <Text>Grid Size</Text>

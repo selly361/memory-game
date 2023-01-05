@@ -3,6 +3,16 @@ import type { gameSliceState, playerMoves } from "types/gameSlice";
 import { createSlice } from "@reduxjs/toolkit";
 import { shuffle } from "utils/shuffleArray";
 
+const grid4x4 = [
+  ...Array.from({ length: 8 }, (_, i) => i + 1),
+  ...Array.from({ length: 8 }, (_, i) => i + 1),
+];
+
+const grid6x6 = [
+  ...Array.from({ length: 18 }, (_, i) => i + 1),
+  ...Array.from({ length: 18 }, (_, i) => i + 1),
+];
+
 const initialState: gameSliceState = {
   theme: "numbers",
   gridSize: "4x4",
@@ -11,7 +21,7 @@ const initialState: gameSliceState = {
   playerMoves: {
     1: 0,
   },
-  grid: shuffle(Array.from({ length: 16 }, (_, i) => i + 1)),
+  grid: shuffle(grid4x4)
 };
 
 const gameSlice = createSlice({
@@ -41,13 +51,13 @@ const gameSlice = createSlice({
     },
 
     changeGridSize: (state, action) => {
-      
       state.gridSize = action.payload;
 
       if (state.gridSize === "6x6") {
-        state.grid = shuffle(Array.from({ length: 36 }, (_, i) => i + 1));
-      } else {
-        state.grid = shuffle(Array.from({ length: 16 }, (_, i) => i + 1));
+        state.grid = shuffle(grid6x6)
+
+      } else if (state.gridSize === "4x4") {
+        state.grid = shuffle(grid4x4)
       }
     },
 
