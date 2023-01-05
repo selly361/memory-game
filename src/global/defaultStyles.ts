@@ -7,7 +7,10 @@ const commonButtonStyles = css`
   text-align: center;
   font-size: 20px;
   line-height: 25px;
-  transition: 1s ease background, transition 1s ease color;
+  transition: 1s ease background, 1s ease color;
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
 `;
 
 // Primary Button
@@ -39,14 +42,15 @@ export const buttonSecondary = css`
   }
 `;
 
-// Big Menu Button
+// Menu Selection Button
 
-export const bigMenuButton = css`
+export const menuSelectionButton = css`
   ${commonButtonStyles}
   font-size: 26px;
   line-height: 32px;
   border-radius: 26px;
   background: #bcced9;
+  color: #fcfcfc;
 
   &.active {
     background: #304859;
@@ -57,9 +61,9 @@ export const bigMenuButton = css`
   }
 `;
 
-// Menu Selection Button
+// Big Menu Button
 
-export const menuSelectionButton = css`
+export const bigMenuButton = css`
   ${commonButtonStyles}
   background: #fda214;
   border-radius: 35px;

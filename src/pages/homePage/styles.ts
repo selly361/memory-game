@@ -6,7 +6,7 @@ export const Body = styled.main`
   background: #152938;
   padding: 34px 0 183px 0;
   display: grid;
-  gap: 78px;
+  gap: 40px;
   justify-items: center;
 `;
 

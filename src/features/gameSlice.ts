@@ -20,12 +20,17 @@ const gameSlice = createSlice({
   initialState,
 
   reducers: {
+
+
+    changeTheme: (state, action) => {
+      state.theme = action.payload;
+    },
+
     changeSettings: (state, action) => {
       const { numPlayers, gridSize, theme } = action.payload;
 
       state.numPlayers = numPlayers;
       state.gridSize = gridSize;
-      state.theme = theme;
 
       
 
@@ -67,3 +72,4 @@ const gameSlice = createSlice({
 });
 
 export default gameSlice.reducer;
+export const { changeCurrentPlayer, changePlayerMoves, changeSettings, changeTheme } = gameSlice.actions
