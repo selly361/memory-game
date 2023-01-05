@@ -12,15 +12,15 @@ export const Container = styled.p`
 export const Text = styled.p`
   font-size: 20px;
   color: #7191a5;
-  grid-column: 1/2;
+  grid-column: span 2;
+  width: 100%;
+  text-align: start;
 `;
 
 export const NumbersSelection = styled.button`
     ${menuSelectionButton}
-    grid-row: 2;
 `
 
 export const IconsSelection = styled.button`
-    grid-row: 2;
     ${menuSelectionButton}
 `
