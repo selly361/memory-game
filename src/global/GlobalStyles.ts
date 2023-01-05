@@ -27,7 +27,6 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     font-weight: 700;
     color: #fff;
-    overflow-x: hidden;
   }
 
   h1 {

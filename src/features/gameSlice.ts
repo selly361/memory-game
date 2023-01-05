@@ -4,13 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { shuffle } from "utils/shuffleArray";
 
 const grid4x4 = [
-  ...Array.from({ length: 8 }, (_, i) => i + 1),
-  ...Array.from({ length: 8 }, (_, i) => i + 1),
+  ...Array.from({ length: 8 }, (_, i) => i),
+  ...Array.from({ length: 8 }, (_, i) => i),
 ];
 
 const grid6x6 = [
-  ...Array.from({ length: 18 }, (_, i) => i + 1),
-  ...Array.from({ length: 18 }, (_, i) => i + 1),
+  ...Array.from({ length: 18 }, (_, i) => i),
+  ...Array.from({ length: 18 }, (_, i) => i),
 ];
 
 const initialState: gameSliceState = {

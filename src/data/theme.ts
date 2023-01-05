@@ -37,7 +37,8 @@ export const icons = [
   faScroll,
   faSkull,
   faSkullCrossbones,
-  faSun,
+  faSun
+  
 ];
 
-export const numbers = Array.from({length: 18}, (_, i) => i + 1);
+export const numbers = Array.from({length: 18}, (_, i) => i);

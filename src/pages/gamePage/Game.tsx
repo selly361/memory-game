@@ -1,12 +1,12 @@
-import React from 'react'
-import { useAppSelector } from 'app/hooks'
+import { Body } from "./styles";
+import { Header } from "components"
+import React from "react";
+import { useAppSelector } from "app/hooks";
 
 function Game() {
-  
-  return (
-    <div>
-    </div>
-  )
+  return <Body>
+    <Header />
+  </Body>
 }
 
-export default Game
+export default Game;
