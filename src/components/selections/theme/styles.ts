@@ -19,8 +19,10 @@ export const Text = styled.p`
 
 export const NumbersSelection = styled.button`
     ${menuSelectionButton}
+    width: 256px;
+    height: 52px;
+
 `
 
-export const IconsSelection = styled.button`
-    ${menuSelectionButton}
+export const IconsSelection = styled(NumbersSelection)`
 `

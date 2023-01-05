@@ -4,9 +4,9 @@ export const Body = styled.main`
   height: 100vh;
   width: 100vw;
   background: #152938;
-  padding: 34px 0 183px 0;
+  padding: 30px 0 183px 0;
   display: grid;
-  gap: 40px;
+  gap: 20px;
   justify-items: center;
 `;
 

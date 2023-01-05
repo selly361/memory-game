@@ -40,10 +40,9 @@ const gameSlice = createSlice({
       state.playerMoves = playerMoves;
     },
 
-    changeSettings: (state, action) => {
-      const { gridSize, theme } = action.payload;
-
-      state.gridSize = gridSize;
+    changeGridSize: (state, action) => {
+      
+      state.gridSize = action.payload;
 
       if (state.gridSize === "6x6") {
         state.grid = shuffle(Array.from({ length: 36 }, (_, i) => i + 1));
@@ -70,7 +69,7 @@ export default gameSlice.reducer;
 export const {
   changeCurrentPlayer,
   changePlayerMoves,
-  changeSettings,
+  changeGridSize,
   changeTheme,
   changePlayers,
 } = gameSlice.actions;

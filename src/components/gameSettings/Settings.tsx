@@ -1,6 +1,6 @@
-import { PlayersSelection, ThemeSelection } from 'components'
+import { Container, StartButton } from './styles'
+import { GridSizeSelection, PlayersSelection, ThemeSelection } from 'components'
 
-import { Container } from './styles'
 import React from 'react'
 
 function Settings() {
@@ -8,6 +8,8 @@ function Settings() {
     <Container>
         <ThemeSelection />
         <PlayersSelection />
+        <GridSizeSelection />
+        <StartButton>Start Game</StartButton>
     </Container>
   )
 }
