@@ -29,34 +29,36 @@ function Tiles() {
 
   useEffect(() => {
     const [firstTile, secondTile] = clickedTiles;
-
+  
     if (firstTile && secondTile && firstTile !== secondTile) {
       setDisabled(true);
-
-      setTimeout(() => {
+  
+      const timeout1 = setTimeout(() => {
         setDisabled(false);
         firstTile.classList.remove("clicked");
         secondTile.classList.remove("clicked");
-
+  
         setClickedTiles([]);
       }, 1000);
-
-      setTimeout(() => {
+  
+      const timeout2 = setTimeout(() => {
         if (firstTile.dataset.card === secondTile.dataset.card) {
           firstTile.classList.add("match");
           secondTile.classList.add("match");
           firstTile.classList.add("disabled");
           secondTile.classList.add("disabled");
-
+  
           setClickedTiles([]);
         }
       }, 1000);
-
-      // Add the following code to block other tiles from being clicked
-      const allTiles = document.querySelectorAll(".tile");
-      allTiles.forEach((tile) => tile.setAttribute("disabled", "true"));
+  
+      return () => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+      };
     }
   }, [clickedTiles]);
+  
 
   return (
     <StyledTiles className={`tiles-${gridSize}`}>
