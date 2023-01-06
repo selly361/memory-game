@@ -27,6 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     font-weight: 700;
     color: #fff;
+    overflow-x: hidden;
   }
 
   h1 {
@@ -75,6 +76,8 @@ export const GlobalStyles = createGlobalStyle`
     border: unset;
     outline: unset;
   }
+
+
 
   /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
   @media (prefers-reduced-motion) {
