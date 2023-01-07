@@ -1,16 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-const zoomOut = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
+import styled from "styled-components";
 
 export const StyledTile = styled.button`
   background: #304859;
@@ -23,6 +11,7 @@ export const StyledTile = styled.button`
   place-items: center;
   cursor: pointer;
   position: relative;
+  
 
   &::before {
     content: "";
@@ -32,10 +21,6 @@ export const StyledTile = styled.button`
     z-index: 50;
     background: #304859;
     transition: 100ms ease opacity;
-  }
-
-  &:disabled {
-    cursor: unset;
   }
 
   &.tile-4x4 {
@@ -52,9 +37,9 @@ export const StyledTile = styled.button`
     background: #bcced9;
   }
 
+
   &.clicked {
     background: #FDA214;
-    animation: ${zoomOut} 0.5s linear;
   }
 
   &.match::before, &.clicked::before {
@@ -62,6 +47,6 @@ export const StyledTile = styled.button`
   }
 
   &.disabled {
-    pointer-events: none;
-  }
+  pointer-events: none;
+}
 `;

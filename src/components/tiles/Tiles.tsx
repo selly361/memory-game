@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useAppDispatch, useAppSelector } from "app/hooks";
 
 import { StyledTiles } from "./styles";
 import { Tile } from "components";
-import { useAppSelector } from "app/hooks";
+import { setRestart } from "features/gameSlice";
 
 function Tiles() {
-  const { grid, gridSize } = useAppSelector((state) => state.game);
+  const { grid, gridSize, restart } = useAppSelector((state) => state.game);
   const [clickedTiles, setClickedTiles] = useState<HTMLElement[]>([]);
   const delay = useRef<NodeJS.Timeout>();
   const [disabled, setDisabled] = useState(false);
-
+  const dispatch = useAppDispatch()
   const handleTileClick = (e: any) => {
     if (delay.current) {
       return;
@@ -50,6 +51,9 @@ function Tiles() {
   
           setClickedTiles([]);
         }
+
+
+        
       }, 1000);
   
       return () => {
@@ -60,10 +64,27 @@ function Tiles() {
   }, [clickedTiles]);
   
 
+
+  useEffect(() => {
+    if(restart){
+      clickedTiles.forEach(tile => {
+        tile.classList.remove("match")
+        tile.classList.remove("disabled")
+        tile.classList.remove("clicked")
+
+        
+
+        
+        dispatch(setRestart(false))
+      })
+    }
+  }, [restart])
+
   return (
     <StyledTiles className={`tiles-${gridSize}`}>
-      {grid.map((value) => (
+      {grid.map((value, i) => (
         <Tile
+          key={`${value}-${i}`} 
           handleTileClick={handleTileClick}
           value={value}
           isDisabled={disabled}

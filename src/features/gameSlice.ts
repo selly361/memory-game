@@ -2,16 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { gameSliceState } from "types/gameSlice";
 import { shuffle } from "utils/shuffleArray";
 
-const grid4x4 = [
-  ...Array.from({ length: 8 }, (_, i) => i),
-  ...Array.from({ length: 8 }, (_, i) => i),
-];
-
-const grid6x6 = [
-  ...Array.from({ length: 18 }, (_, i) => i),
-  ...Array.from({ length: 18 }, (_, i) => i),
-];
-
 const initialState: gameSliceState = {
   theme: "numbers",
   gridSize: "4x4",
@@ -20,22 +10,31 @@ const initialState: gameSliceState = {
   playerMoves: {
     1: 0,
   },
-  grid: shuffle(grid4x4),
+  grid: shuffle([...Array.from(Array(8).keys()), ...Array.from(Array(8).keys())]),
+  stopwatch: 0,
+  restart: false
 };
 
 const gameSlice = createSlice({
   name: "game",
   initialState,
+  
   reducers: {
     setTheme: (state, action) => {
       state.theme = action.payload;
     },
     setGridSize: (state, action) => {
       state.gridSize = action.payload;
-      state.grid = shuffle(
-        action.payload === "4x4" ? grid4x4 : grid6x6
-      );
+      
+
+      if(action.payload === "4x4"){
+        state.grid = shuffle([...Array.from(Array(8).keys()).concat(Array.from(Array(8).keys()))])
+      } else {
+        state.grid = shuffle([...Array.from(Array(18).keys()).concat(Array.from(Array(18).keys()))])
+      }
+
     },
+    
     setNumPlayers: (state, action) => {
       state.numPlayers = action.payload;
       state.currentPlayer = 1;
@@ -44,10 +43,32 @@ const gameSlice = createSlice({
       for (let i = 1; i <= action.payload; i++) {
         state.playerMoves[i] = 0;
       }
+    },
+
+
+    setCurrentPlayer: (state) => {
+      state.currentPlayer++
+
+      if(state.currentPlayer > state.numPlayers){
+        state.currentPlayer = 1
+      }
+    },
+
+    setRestart: (state, action) => {
+      state.restart = action.payload;
+
+      if(state.restart){
+        state.grid = shuffle(state.grid)
+        state.currentPlayer = 1;
+
+        for (let i = 1; i <= action.payload; i++) {
+          state.playerMoves[i] = 0;
+        }
+      }
     }
   },
 });
 
-export const { setGridSize, setNumPlayers, setTheme } = gameSlice.actions
+export const { setGridSize, setNumPlayers, setTheme, setRestart } = gameSlice.actions;
 
-export default gameSlice.reducer
+export default gameSlice.reducer;

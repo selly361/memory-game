@@ -11,4 +11,6 @@ export type gameSliceState = {
     currentPlayer: number;
     playerMoves: playerMoves
     grid: number[];
+    stopwatch: number;
+    restart: boolean;
 }
