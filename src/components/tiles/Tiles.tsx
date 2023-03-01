@@ -78,7 +78,7 @@ function Tiles() {
         dispatch(setRestart(false))
       })
     }
-  }, [restart])
+  })
 
   return (
     <StyledTiles className={`tiles-${gridSize}`}>
